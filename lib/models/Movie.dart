@@ -10,6 +10,7 @@ class Movie {
     this.id,
     this.adult,
     this.budget,
+    this.genreIds,
     this.genres,
     this.originalTitle,
     this.overview,
@@ -25,8 +26,13 @@ class Movie {
 
   final bool adult;
 
+  @JsonKey(required: false)
   final int budget;
 
+  @JsonKey(name: 'genre_ids', required: false)
+  final List<int> genreIds;
+
+  @JsonKey(required: false)
   final List<Genre> genres;
 
   @JsonKey(name: 'original_title')
@@ -39,12 +45,13 @@ class Movie {
   @JsonKey(name: 'poster_path')
   final String posterPath;
 
-  @JsonKey(name: 'production_companies')
+  @JsonKey(name: 'production_companies', required: false)
   final List<ProductionCompany> productionCompanies;
 
   @JsonKey(name: 'release_date')
   final String releaseDate;
 
+  @JsonKey(required: false)
   final String status;
 
   final String title;

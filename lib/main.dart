@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:movies/models/Error.dart';
-import 'package:movies/models/Movie.dart';
+import 'package:movies/models/Movies.dart';
 import 'package:movies/services/movie.dart';
 
 Future main() async {
@@ -39,15 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: MovieService.getMovie(618344),
+        future: MovieService.getPopular(),
         builder: (BuildContext _context, AsyncSnapshot _snapshot) {
           if (_snapshot.hasData) {
-            final Movie movie = _snapshot.data;
-            print(movie.title);
-            print(movie.productionCompanies[0].name);
+            final Movies movies = _snapshot.data;
+            print(movies.totalResults);
 
             return Center(
-              child: Text(movie.title),
+              child: Text('${movies.totalResults}'),
             );
           }
 
