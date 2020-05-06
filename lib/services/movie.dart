@@ -9,7 +9,6 @@ class MovieService {
   static getMovie(id) async {
     try {
       final String url = '${Env.apiBaseUrl}/movie/$id?api_key=${Env.theMovieDbApiKey}';
-      print(url);
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
