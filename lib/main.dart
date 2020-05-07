@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:movies/models/Credits.dart';
 import 'package:movies/models/Movies.dart';
 import 'package:movies/services/movie.dart';
 
@@ -38,14 +39,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: MovieService.getPopular(),
+        future: MovieService.getCredits(120),
         builder: (BuildContext _context, AsyncSnapshot _snapshot) {
           if (_snapshot.hasData) {
-            final Movies movies = _snapshot.data;
-            print(movies.totalResults);
+            final Credits credits = _snapshot.data;
+            print(credits.crew.toString());
 
             return Center(
-              child: Text('${movies.totalResults}'),
+              child: Text('${credits.cast[0].name}'),
             );
           }
 
